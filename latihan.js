@@ -51,3 +51,55 @@ var status = "close"
 var jamBuka = 9
 
 console.log(status == "open" && jamBuka == 9)
+
+// Operator STRING
+console.log("STRING")
+console.log("=============")
+var word = "Web Programming"
+var word1 = "Web"
+var word2 = "Progamming"
+console.log(word)
+console.log(word.length)
+console.log(word1)
+console.log(word.charAt(3))
+console.log(word1, word2, 'tahun 2026')
+
+var word3 = word.substring(3)
+console.log(word3)
+console.log(word.toUpperCase())
+console.log(word.toLowerCase())
+console.log(word.trim())
+console.log(word.replace('r','R'))
+console.log(word.replaceAll(' ','-'))
+
+console.log('Mengubah menjadi String')
+// Mengubah menjadi String
+// 1.   .toString
+// 2.   String(namaVariabel)
+
+var angka = 10
+console.log(angka)
+console.log(angka+angka)
+console.log(String(angka))
+console.log(angka.toString())
+
+var angka = angka.toString()
+console.log(angka)
+console.log(angka+angka)
+
+// Mengubah jadi Angka/Number
+// 1.   parseInt(namaVariabel)
+// 2.   Number(namavariabel)
+
+var kata = "7"
+console.log(kata)
+console.log(Number(kata))
+console.log(parseInt(kata))
+
+var angka1 = 1.5
+var angka2 = 2.7
+console.log(angka1)
+console.log(angka2)
+
+var angka3 = angka1 + angka2
+console.log(angka3)

@@ -78,9 +78,9 @@
 //     }
 // }
 
-// for(var angka = 1; angka < 10; angka++){
-//     console.log('literasi ke-' + angka);
-// }
+for(var angka = 2; angka <= 10; angka+= 2){
+    console.log('Iterasi for ke-' + angka);
+}
 
 // var jumlah = 0
 // for(var deret = 5;deret > 0;deret){
@@ -90,16 +90,16 @@
 
 // console.log('jumlah terakhir :' + jumlah)
 
-//contoh 1
-// var flag = 1
-// while(flag < 10){
-//     console.log('literasi ke-' + flag)
-//     flag++
-// }
+// contoh 1
+var flag = 2
+while(flag <= 10){
+    console.log('Iterasi while ke-' + flag)
+    flag+= 2
+}
 
-//contoh 2
-var flag = 1
-do {
-    console.log('literas ke-' + flag)
-    flag++
-} while(flag < 10)
+// //contoh 2
+// var flag = 1
+// do {
+//     console.log('Iterasi ke-' + flag)
+//     flag++
+// } while(flag < 10)

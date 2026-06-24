@@ -25,3 +25,27 @@ console.log("setelah unshift : "+angka)
 console.log("sebelum shift : "+angka)
 angka.shift()
 console.log("setelah shift : "+angka)
+
+var peserta = ["Andra", "Taufik", "Adit", "Debby"]
+console.log(peserta)
+
+// join
+console.log("sebelum join")
+console.log(peserta)
+// peserta.join ("-")
+console.log("setelah join")
+console.log(peserta.join("-"))
+
+//split
+var nama = "Daffa seta Az-Zahra Resqiumah"
+console.log("sebelum split")
+console.log(nama)
+console.log("setelah di split")
+console.log(nama.split(""))
+
+console.log("sebelum ")
+console.log(nama)
+console.log("setelah di split")
+console.log(nama.split(" "))
+
+console.log(nama.length)

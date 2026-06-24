@@ -103,3 +103,16 @@ console.log(angka2)
 
 var angka3 = angka1 + angka2
 console.log(angka3)
+
+if(true){
+    console.log("jalankan code")
+}
+
+if(false){
+    console.log("code tidak dijalankan")
+}
+
+var mood = "happy"
+if ( mood == "sad"){
+    console.log("hari ini aku bahagia")
+}

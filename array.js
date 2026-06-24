@@ -26,7 +26,7 @@ console.log("sebelum shift : "+angka)
 angka.shift()
 console.log("setelah shift : "+angka)
 
-var peserta = ["Andra", "Taufik", "Adit", "Debby"]
+var peserta = ["Andra, Taufik, Adit, Debby"]
 console.log(peserta)
 
 // join
@@ -46,6 +46,17 @@ console.log(nama.split(""))
 console.log("sebelum ")
 console.log(nama)
 console.log("setelah di split")
-console.log(nama.split(" "))
+console.log(nama.split(" ").length)
 
 console.log(nama.length)
+
+var peserta = ["Andra", "Taufik", "Adit", "Debby"]
+console.log("sebelum sort")
+console.log(peserta)
+console.log("setelah di sort")
+console.log(peserta.sort())
+console.log(peserta)
+
+console.log("setelah di Reverse")
+console.log(peserta.reverse())
+console.log(peserta)

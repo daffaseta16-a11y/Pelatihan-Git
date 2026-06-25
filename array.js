@@ -72,3 +72,22 @@ console.log(peserta)
 console.log("setelah di splice")
 peserta.splice(1,2)
 console.log(peserta)
+
+// looping array
+// contoh 1
+console.log("====looping array====")
+console.log("====contoh 1====")
+var arr = ['jeruk', 'mangga', 'apel']
+for(var i = 0; i < arr.length; i++){
+    console.log(arr[i])
+}
+
+console.log("====contoh 2====")
+// contoh 2
+var names = ["john", "doe", "jack"]
+var i = 0
+while(i < names.length){
+    console.log(names[i])
+    i++
+}
+

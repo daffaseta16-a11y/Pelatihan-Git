@@ -69,6 +69,7 @@
 // hitungLingkaran(21)
 
 console.log("first-class function")
+// fungsi biasa
 function hitungPersegi(sisi){
 
     function luas(s){

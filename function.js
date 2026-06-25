@@ -82,3 +82,12 @@ function hitungPersegi(sisi){
 }
 
 hitungPersegi(6)
+
+// console.log("====Currying Function====")
+// function tambah (a){
+//     return function(b){
+//         return a + b 
+//     }
+// }
+
+// console.log(tambah(2)(5))

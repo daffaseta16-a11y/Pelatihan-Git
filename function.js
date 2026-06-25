@@ -38,32 +38,47 @@
 // console.log(fungsiPerkalian(2, 5))
 
 // Functional Progammming
-console.log("Recursive Function")
+// console.log("Recursive Function")
 
-// Program menghitung mundur angka 1
-function countDown(number){
-    console.log(number)
+// // Program menghitung mundur angka 1
+// function countDown(number){
+//     console.log(number)
 
-    var newNumber = number - 2
-    if (newNumber > 0){
-        countDown(newNumber)
-    }
-}
+//     var newNumber = number - 2
+//     if (newNumber > 0){
+//         countDown(newNumber)
+//     }
+// }
 
-countDown(10)
+// countDown(10)
+
+// console.log("first-class function")
+// function hitungLingkaran(radius){
+//     var pi = 22/7
+
+//     function luas(r){
+//         return pi * r * r
+//     }
+//     function keliling(r){
+//         return 2 * pi * r
+//     }
+//     console.log("Luas Lingkaran =", luas(radius))
+//     console.log("Keliling lingkaran =", keliling(radius))
+// }
+
+// hitungLingkaran(21)
 
 console.log("first-class function")
-function hitungLingkaran(radius){
-    var pi = 22/7
+function hitungPersegi(sisi){
 
-    function luas(r){
-        return pi * r * r
+    function luas(s){
+        return s * s 
     }
-    function keliling(r){
-        return 2 * pi * r
+    function keliling(s){
+        return 4 * s
     }
-    console.log("Luas Lingkaran =", luas(radius))
-    console.log("Keliling lingkaran =", keliling(radius))
+    console.log("Luas Persegi =", luas(sisi))
+    console.log("Keliling persegi =", keliling(sisi))
 }
 
-hitungLingkaran(5)
+hitungPersegi(6)

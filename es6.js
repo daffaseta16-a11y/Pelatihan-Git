@@ -33,11 +33,14 @@
 // }
 // tampilkanNama("Huda")
 
-const hitungPersegi = (sisi) => {
-    const luas = (s) => s * s 
-    const keliling = (s) => 4 * s
-    console.log("Luas Persegi =", luas(sisi))
-    console.log("Keliling persegi =", keliling(sisi))
-}
+// const hitungPersegi = (sisi) => {
+//     const luas = (s) => s * s 
+//     const keliling = (s) => 4 * s
+//     console.log("Luas Persegi =", luas(sisi))
+//     console.log("Keliling persegi =", keliling(sisi))
+// }
 
-hitungPersegi(6)
+// hitungPersegi(6)
+
+let nama = "Na Jaemin"
+console.log(`halo!, ${nama}. selamat datang!`)

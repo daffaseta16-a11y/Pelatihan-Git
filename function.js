@@ -30,9 +30,40 @@
 // console.log(tampilkanAngka(5, 9))
 // console.log(tampilkanAngka(6))
 
-console.log("===Anonymus Function===")
-var fungsiPerkalian = function(angkaPertama, angkaKedua){
-    return angkaPertama * angkaKedua
+// console.log("===Anonymus Function===")
+// var fungsiPerkalian = function(angkaPertama, angkaKedua){
+//     return angkaPertama * angkaKedua
+// }
+
+// console.log(fungsiPerkalian(2, 5))
+
+// Functional Progammming
+console.log("Recursive Function")
+
+// Program menghitung mundur angka 1
+function countDown(number){
+    console.log(number)
+
+    var newNumber = number - 2
+    if (newNumber > 0){
+        countDown(newNumber)
+    }
 }
 
-console.log(fungsiPerkalian(2, 5))
+countDown(10)
+
+console.log("first-class function")
+function hitungLingkaran(radius){
+    var pi = 22/7
+
+    function luas(r){
+        return pi * r * r
+    }
+    function keliling(r){
+        return 2 * pi * r
+    }
+    console.log("Luas Lingkaran =", luas(radius))
+    console.log("Keliling lingkaran =", keliling(radius))
+}
+
+hitungLingkaran(5)

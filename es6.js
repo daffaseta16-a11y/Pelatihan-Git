@@ -174,43 +174,23 @@ function periksaDataPasien(nomorIdPasien) {
     });
 }
 
-periksaDataPasien(5).then(function(data) {
-   console.log(data); 
-}).catch(function(err) {
-    console.log(err);
-})
+// periksaDataPasien(5).then(function(data) {
+//    console.log(data); 
+// }).catch(function(err) {
+//     console.log(err);
+// })
 
-function doAsync() {
-    return new Promise(function(resolve, reject) {
-        var check = true;
-        if (check) {
-            resolve("berhasil");
-        } else {
-            reject("gagal");
-        }
-    })
-}
 
-async function hello() {
+async function hello(nomorIdPasien) {
     try {
-        var result = await doAsync();
+        var result = await doAsync(nomorIdPasien);
         console.log(result);
-    } catch(err) {
+    }catch(err){
         console.log(err);
     }
 }
 
-async function memeriksaPasien(nomorIdPasien) {
-    try {
-        var hasil = await periksaDataPasien(nomorIdPasien);
-        console.log(hasil);
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-hello();
-memeriksaPasien(4);
+hello(2);
 
 // Async/await
 

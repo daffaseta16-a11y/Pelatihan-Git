@@ -156,45 +156,89 @@
 
 // askMom()
 
-// function perikasaDataPasien(nomorIdPasien) {
-//     var dataPasien = [
-//         {id: 1, nama: "jhon", jenisKelamin: "laki-laki"}
-//         {id: 2, nama: "boo", jenisKelamin: "laki-laki"}
-//         {id: 3, nama: "grace", jenisKelamin: "perempuan"}
-//         {id: 4, nama: "jaemin", jenisKelamin: "laki-laki"}
-//     ]
-//     return new Promise( function(resolve, reject){
-//         var pasien == dataPasien.find(x=> x.id === nomorIdPasien)
-//         if (pasien === undefined){
-//             reject("data pasien tidak ada")
-//         }else{
-//             resolve(pasien)
-//         }
-//     })
-// }
+function periksaDataPasien(nomorIdPasien) {
+    var dataPasien = [
+        {id: 1, nama: "John", jenisKelamin: "Laki-laki"},
+        {id: 2, nama: "Jeno", jenisKelamin: "Laki-laki"},
+        {id: 3, nama: "grace", jenisKelamin: "Perempuan"},
+        {id: 4, nama: "jaemin", jenisKelamin: "Laki-laki"},
+    ];
 
-// periksaDataPasien(5).then(function(data){
-//     console.log(data)
-// }).catch(function(err){
-//     console.log(err)
-// })
+    return new Promise(function(resolve, reject) {
+        var pasien = dataPasien.find(x => x.id === nomorIdPasien);
+        if (pasien === undefined) {
+            reject("data pasien tidak tersedia");
+        } else {
+            resolve(pasien);
+        }
+    });
+}
 
-// Async/await
+periksaDataPasien(3).then(function(data) {
+   console.log(data); 
+}).catch(function(err) {
+    console.log(err);
+})
 
- function doAsync() {
-    return new Promise( function (resolve, reject){
-        var check = true
-        if (check){
-            resolve("berhasil")
-        }else{
-            reject("gagal")
+function doAsync() {
+    return new Promise(function(resolve, reject) {
+        var check = true;
+        if (check) {
+            resolve("berhasil");
+        } else {
+            reject("gagal");
         }
     })
 }
 
 async function hello() {
-    var result = await doAsync()
-    console.log(result)
+    try {
+        var result = await doAsync();
+        console.log("// Async/await");
+        console.log(result);
+    } catch(err) {
+        console.log("// Async/await");
+        console.log(err);
+    }
 }
 
-hello()
+async function memeriksaPasien(nomorIdPasien) {
+    try {
+        var hasil = await periksaDataPasien(nomorIdPasien);
+        console.log(hasil);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+hello();
+memeriksaPasien(4);
+
+// Async/await
+
+//  function doAsync() {
+//     return new Promise( function (resolve, reject){
+//         var check = true
+//         if (check){
+//             resolve("berhasil")
+//         }else{
+//             reject("gagal")
+//         }
+//     })
+// }
+
+// async function hello() {
+//         var result = await doAsync()
+//     console.log(result)
+// }
+
+// async function hello() {
+//     try{
+//         var result = await doAsync()
+//     console.log(result)
+//     }catch(err){
+//         console.log(err)
+//     }
+// }
+
+// hello()

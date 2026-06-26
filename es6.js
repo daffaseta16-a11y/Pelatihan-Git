@@ -174,7 +174,7 @@ function periksaDataPasien(nomorIdPasien) {
     });
 }
 
-periksaDataPasien(3).then(function(data) {
+periksaDataPasien(5).then(function(data) {
    console.log(data); 
 }).catch(function(err) {
     console.log(err);
@@ -194,10 +194,8 @@ function doAsync() {
 async function hello() {
     try {
         var result = await doAsync();
-        console.log("// Async/await");
         console.log(result);
     } catch(err) {
-        console.log("// Async/await");
         console.log(err);
     }
 }

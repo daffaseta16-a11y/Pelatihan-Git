@@ -42,5 +42,11 @@
 
 // hitungPersegi(6)
 
-let nama = "Na Jaemin"
-console.log(`halo!, ${nama}. selamat datang!`)
+// let nama = "Na Jaemin"
+// console.log(`halo!, ${nama}. selamat datang!`)
+
+text1 = "halo"
+text2 = "selamat"
+text3 = "datang"
+
+console.log(`${text1} ${text2} ${text3}`)

@@ -156,31 +156,22 @@
 
 // askMom()
 
-function periksaDataPasien(nomorIdPasien) {
-    var dataPasien = [
+function doAsync(nomorIdPasien) {
+    return new Promise (function (resolve, reject){
+       var dataPasien = [
         {id: 1, nama: "John", jenisKelamin: "Laki-laki"},
         {id: 2, nama: "Jeno", jenisKelamin: "Laki-laki"},
         {id: 3, nama: "grace", jenisKelamin: "Perempuan"},
         {id: 4, nama: "jaemin", jenisKelamin: "Laki-laki"},
-    ];
-
-    return new Promise(function(resolve, reject) {
-        var pasien = dataPasien.find(x => x.id === nomorIdPasien);
-        if (pasien === undefined) {
-            reject("data pasien tidak tersedia");
-        } else {
-            resolve(pasien);
-        }
-    });
+       ]
+       var pasien = dataPasien.find(x=> x.id === nomorIdPasien)
+       if (pasien === undefined){
+        reject("data pasien tidak ada")
+       }else {
+        resolve(pasien)
+       }
+    })
 }
-
-// periksaDataPasien(5).then(function(data) {
-//    console.log(data); 
-// }).catch(function(err) {
-//     console.log(err);
-// })
-
-
 async function hello(nomorIdPasien) {
     try {
         var result = await doAsync(nomorIdPasien);
@@ -191,6 +182,13 @@ async function hello(nomorIdPasien) {
 }
 
 hello(2);
+   
+// periksaDataPasien(5).then(function(data) {
+//    console.log(data); 
+// }).catch(function(err) {
+//     console.log(err);
+// })
+
 
 // Async/await
 

@@ -181,7 +181,7 @@ async function hello(nomorIdPasien) {
     }
 }
 
-hello(2);
+hello(4);
    
 // periksaDataPasien(5).then(function(data) {
 //    console.log(data); 

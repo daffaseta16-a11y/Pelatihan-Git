@@ -25,8 +25,9 @@ console.log(nama)
     if(item.nama.toLowerCase().includes(nama)) {
     result += `<h3> ${index+1}.</br>NIM : ${item.nim}<br>Nama : ${item.nama}`
     }
-    else
-      res.send(`<h3>Data tidak ditemukan.<hbr>`)
+    if (result === "")
+
+    res.send(`<h3>Data tidak ditemukan.<hbr>`)
   })
   res.send(result);
 }

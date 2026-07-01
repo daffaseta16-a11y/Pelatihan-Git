@@ -4,9 +4,7 @@ const port = 3000;
 
 let mahasiswa = ["Daffa","Irtiyah","Andra","Yulita"]
 let objectMahasiswa = [
-  {nim :161328,
-    nama : "Na Jaemin"
-  },
+  {nim :161328, nama: "Na Jaemin"},
   {nim :281613, nama: "Jung Jaehyun"},
   {nim :130128, nama: "Ohm Pawat"},
   {nim :131628, nama: "Ing Asavanud"}

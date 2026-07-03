@@ -58,7 +58,7 @@ const getMoviesApi = (req, res) => {
    }
 
    let result = movies.filter((item, index) => {
-    return item.title.toLowerCase().includes(title.toLowerCase()) && (!year || item.year == year)
+    return (item.title.toLowerCase().includes(title.toLowerCase()) && (!year || item.year == year))
    })
 
    res.json(result)
@@ -110,8 +110,8 @@ const timeMiddleware = (req, res, next) => {
 }
 
 app.get('/api/movies', loggerMiddleware, timeMiddleware, getMoviesApi)
-// app.get('/api/movies',loggerMiddleware,tokenMiddleware,getMoviesApi)
-app.get("/api/movies/:id", checkMovieIdMiddleware, getMoviesbyIdApi)
+app.get('/api/movies',loggerMiddleware,tokenMiddleware,getMoviesApi)
+//app.get("/api/movies/:id", checkMovieIdMiddleware, getMoviesbyIdApi)
 
 
 app.listen(port, () => {

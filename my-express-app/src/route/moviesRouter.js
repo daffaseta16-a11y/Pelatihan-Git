@@ -12,6 +12,7 @@ const {getMovies,
 } = require("../controller/moviesController.js")
 
 moviesRouter.get('/movies',getMoviesApi)
+moviesRouter.get('/movies/:id',getMoviesbyIdApi)
 
 
 module.exports = {moviesRouter}

@@ -40,7 +40,7 @@ const getMoviesId = (req, res) => {
 // if(hasil){
 //   return res.send("<h3>Movie tidak dapat ditemukan</br>")
 // }
-  res.send(`<h3>Title: ${hasil.title} <br> Year: ${hasil.year}</br>`)
+  res.send(hasil)
 }
 
 app.get('/movies', getMovies)
@@ -50,16 +50,15 @@ app.get('/movies/:id', getMoviesId)
 
 
 const getMoviesApi = (req, res) => {
-  let {title} = req.query 
+  let {title, year} = req.query 
 
-   console.log(title)
-
+  //  console.log(title)
    if(title == undefined){
    title = ""
    }
 
    let result = movies.filter((item, index) => {
-    return item.title.toLowerCase().includes(title.toLowerCase())
+    return item.title.toLowerCase().includes(title.toLowerCase()) && (!year || item.year == year)
    })
 
    res.json(result)
@@ -71,17 +70,48 @@ const getMoviesbyIdApi = (req, res) => {
   let hasil = movies.find((item) => {
     return item.id === Number(id)
   })
-if(hasil){
-  return res.send("<h3>Movie tidak dapat ditemukan</br>")
-}
-  res.send(`<h3>Title: ${hasil.title} <br> Year: ${hasil.year}</br>`)
+  res.send(hasil)
 }
 
-app.get('/api/movies', getMoviesApi)
-app.get('/api/movies/:id', getMoviesbyIdApi)
+// app.get('/api/movies', getMoviesApi)
+// app.get('/api/movies/:id', getMoviesbyIdApi)
 
+const loggerMiddleware = (req, res, next) => {
+  console.log("Ada request masuk")
+  next()
+}
 
+const tokenMiddleware = (req, res, next) => {
+  let { token } = req.query
 
+  if (token === "12345") {
+    next()
+  } else {
+    res.status(401).json({
+      message: "Token tidak valid"
+    })
+  }
+}
+
+const checkMovieIdMiddleware = (req, res, next) => {
+  let { id } = req.params
+  let result = movies.find(item => item.id === Number(id))
+  console.log(new Date())
+  if (result) {
+    next()
+  } else {
+    res.status(404).json({ message: "Movie tidak ditemukan" })
+  }
+}
+
+const timeMiddleware = (req, res, next) => {
+  console.log(new Date())
+  next()
+}
+
+app.get('/api/movies', loggerMiddleware, timeMiddleware, getMoviesApi)
+// app.get('/api/movies',loggerMiddleware,tokenMiddleware,getMoviesApi)
+app.get("/api/movies/:id", checkMovieIdMiddleware, getMoviesbyIdApi)
 
 
 app.listen(port, () => {

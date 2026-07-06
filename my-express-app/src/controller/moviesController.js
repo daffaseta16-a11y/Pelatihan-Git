@@ -1,9 +1,9 @@
-let movies = [
-    {id: 1, title: "spiderman", year: 2002},
-    {id: 2, title: "Jhon wick", year: 2014},
-    {id: 3, title: "The Avegers", year: 2012},
-    {id: 4, title: "Logan", year: 2017}
-]
+// let movies = [
+//     {id: 1, title: "spiderman", year: 2002},
+//     {id: 2, title: "Jhon wick", year: 2014},
+//     {id: 3, title: "The Avegers", year: 2012},
+//     {id: 4, title: "Logan", year: 2017}
+// ]
 
 const getMovies = (req, res) => {
   let {title} = req.query 

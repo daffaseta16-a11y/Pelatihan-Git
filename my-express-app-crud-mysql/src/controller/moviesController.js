@@ -157,5 +157,36 @@ const creatMovie = (req, res) => {
     })
 }
 
+const updateMovie = (req, res) => {
+    let {title, year} = req.body
+    let {id} = req.params
+    let queryText = `UPDATE tb_movies
+                     SET title_tb_movie = ?, year_tb_movie = ?
+                     WHERE id_tb_movie = ?`
 
-module.exports = {readMovie, readMovieById, creatMovie}
+    connectionPool.query(queryText, [title, year, id], (err) => {
+        if(err){
+            console.log(err)
+            return
+        }
+        res.json({'message' : "berhasil"})
+    })
+}
+
+const deleteMovie = (req, res) => {
+    let {id} = req.params
+    let queryText = `DELETE FROM tb_movies
+                     WHERE id_tb_movie = ?`
+
+    connectionPool.query(queryText, [id], (err) => {
+        if(err){
+            console.log(err)
+            return
+        }
+        res.json({'message' : "berhasil"})
+    })
+}
+
+
+
+module.exports = {readMovie, readMovieById, creatMovie, updateMovie, deleteMovie}

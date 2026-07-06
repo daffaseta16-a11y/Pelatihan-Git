@@ -15,12 +15,14 @@ const moviesRouter = express.Router()
 //moviesRouter.get('/movies',getMoviesApi)
 //moviesRouter.get('/movies/:id',getMoviesbyIdApi)
 
-const {readMovie, readMovieById, creatMovie} = require('../controller/moviesController.js')
+const {readMovie, readMovieById, creatMovie, updateMovie, deleteMovie} = require('../controller/moviesController.js')
 
 moviesRouter.get('/movies', readMovie)
 moviesRouter.get('/movies/:id', readMovieById)
 
 moviesRouter.post('/movies', creatMovie)
+moviesRouter.put('/movies/:id', updateMovie)
+moviesRouter.delete('/movies/:id', deleteMovie)
 
 module.exports = {moviesRouter}
 

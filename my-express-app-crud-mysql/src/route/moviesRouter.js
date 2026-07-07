@@ -16,8 +16,9 @@ const moviesRouter = express.Router()
 //moviesRouter.get('/movies/:id',getMoviesbyIdApi)
 
 const {readMovie, readMovieById, creatMovie, updateMovie, deleteMovie} = require('../controller/moviesController.js')
+const { authJWT } = require("../middleware/auth.js")
 
-moviesRouter.get('/movies', readMovie)
+moviesRouter.get('/movies', authJWT, readMovie)
 moviesRouter.get('/movies/:id', readMovieById)
 
 moviesRouter.post('/movies', creatMovie)

@@ -1,8 +1,7 @@
+require('dotenv').config()
 const connectionPool = require("../config/db")
 const bcrypt = require('bcrypt')
-const login = (req, res) => {
-    res.send("halo halo ini halaman login")
-}
+const jwt  = require('jsonwebtoken')
 
 const register = (req, res) => {
     let {email, name, pass} = req.body
@@ -55,6 +54,43 @@ const register = (req, res) => {
         })
         })
     })
+}
+
+const login = (req, res) => {
+    let {email, pass} = req.body 
+    let queryText = `SELECT * FROM tb_user WHERE email_tb_user = '${email}'`
+
+    connectionPool.query(queryText, (err, result) => {
+        if(err){
+            console.error (err)
+            return res.status(500).json({
+            status : "Failed",
+            Message : err.message
+            })
+        }
+
+        const user = result[0]
+
+        if(!user){
+            return res.status(401).json({
+                status:"Failed",
+                message:"Invalid Credential"
+            })
+        }
+
+        bcrypt.compare(pass, user.pass_tb_user, (err, isMatch) => {
+            if(!isMatch){
+                return res.status(401).json({
+                status:"Failed",
+                message:"Invalid Credential"
+                })
+            }
+
+            const accessToken = jwt.sign({email : user.email_tb_user}, process.env.JWT_SECRET)
+            res.json(accessToken)
+        })
+    })
+
 }
 
 module.exports = {login, register}

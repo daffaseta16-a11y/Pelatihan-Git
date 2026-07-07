@@ -17,7 +17,12 @@ const register = (req, res) => {
             })
         }
         
-
+    if(result.length > 0){
+            return res.status(500).json({
+                status : "Failed",
+                Message : "email user sudah terbaca"
+            })
+    }
 
         bcrypt.hash(pass, 10, (err, hashedPassword) => {
             if(err){

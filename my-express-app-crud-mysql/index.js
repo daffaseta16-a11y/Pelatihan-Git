@@ -6,6 +6,8 @@ const {userRouter} = require('../my-express-app-crud-mysql/src/route/userRouter'
 // const { moviesRouter } = require('./src/route/moviesRouter');
 const app = express();
 const port = 3000
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger-output.json')
 
 var corsOptions = {
 origin: 'http://localhost:3000',
@@ -17,6 +19,7 @@ app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/api', moviesRouter)
 app.use('/', userRouter)
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 //app.use("/movies/:id", )
 
 // app.get('/', (req, res) => {

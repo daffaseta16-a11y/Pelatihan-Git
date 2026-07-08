@@ -1,0 +1,26 @@
+  p 
+  {
+            background-color: palegoldenrod;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 13pt;
+            text-align: center;
+        }
+
+  .p2 
+  {
+            background-color: pink;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 13pt;
+            text-align: center;
+        }
+
+
+img {
+    height: 300px;
+}
+
+div {
+    height: 100px;
+    width: 100px;
+    background-color: palegreen
+}

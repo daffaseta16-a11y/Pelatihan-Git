@@ -15,7 +15,7 @@
         }
 
         .progress-bar{
-            width: 1000px;
+            width: 100%;
             height: 20px;
             animation: example;
             animation-duration: 10s;
@@ -24,7 +24,7 @@
         @keyframes example {
             0%{
                 background-color: plum;
-                width: 0px;
+                width: 0%;
             }
             25%{
                 background-color: pink;
@@ -33,9 +33,24 @@
                 background-color: palevioletred;
             }
             100%{
-                width: 1000px;
+                width: 100%;
                 background-color: black';
             }
+        }
+
+        div{
+            font-size: 23pt;
+        }
+        p{
+            font-size: 1rem;
+        }
+        body{
+            background-color: peachpuff;
+        }
+        @media only screen and (max-width: 600px){
+        body{
+            background-color: powderblue;
+        }
         }
 
         /* @keyframes example {
@@ -67,6 +82,13 @@
     <div class="animasi"></div>
     <div class="progress-bar">
         Progress
+    </div>
+
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente optio quo nihil facere accusamus dolore mollitia debitis, aut dolores dicta, amet illo ipsa tempora nesciunt neque. Ratione dolorum sint blanditiis.
+            Pariatur quis non nesciunt dicta molestias eos saepe eum id fugiat voluptates odit nulla fugit dolore ad consequuntur maxime tenetur iste, sequi consequatur facilis totam doloremque fuga. Et, nihil eveniet!
+        </p>
     </div>
 </body>
 </html>

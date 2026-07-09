@@ -4,15 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <style>
         .animasi{
             width: 100px;
             height: 100px;
             background-color: palevioletred;
+            /* animation-name: example; */
+            /* animation-duration: 10s; */
         }
+
+        .progress-bar{
+            width: 1000px;
+            height: 20px;
+            animation: example;
+            animation-duration: 10s;
+        }
+
+        @keyframes example {
+            0%{
+                background-color: plum;
+                width: 0px;
+            }
+            25%{
+                background-color: pink;
+            }
+            50%{
+                background-color: palevioletred;
+            }
+            100%{
+                width: 1000px;
+                background-color: black';
+            }
+        }
+
+        /* @keyframes example {
+            from {
+                background-color: palevioletred;
+            }
+            to{
+                background-color: powderblue;
+            }
+        } */
+
+        /* @keyframes example {
+            0%{
+                background-color: palevioletred;
+            }
+            25%{
+                background-color: plum;
+            }
+            50%{
+                background-color: peachpuff;
+            }
+            100%{
+                background-color: burlywood;
+            }
+        } */
     </style>
 </head>
 <body>
     <div class="animasi"></div>
+    <div class="progress-bar">
+        Progress
+    </div>
 </body>
 </html>

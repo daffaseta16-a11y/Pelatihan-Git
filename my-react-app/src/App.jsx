@@ -1,7 +1,10 @@
 import Wellcome from './components/Wellcome'
+import Counter from './components/Counter'
+import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [count, setCount] = useState(0)
  let peserta = [
   {nama:"Jaemin", kota:"Busan", umur:25},
   {nama:"Jeno", kota:"Doengju", umur:26},
@@ -10,7 +13,6 @@ function App() {
   {nama:"Yulita", kota:"Malinau", umur:20},
   {nama:"Pia", kota:"Samarinda", umur:16}
  ]
-  
   return (
     <>
     <div className='container'>
@@ -21,6 +23,14 @@ function App() {
       })
       }
     </div>
+    <button
+    type="button"
+    className="counter"
+    onClick={() => setCount((count) => count + 1)}
+    >
+    Count is {count}
+    </button>
+    <Counter></Counter>
     </>
   )
 }

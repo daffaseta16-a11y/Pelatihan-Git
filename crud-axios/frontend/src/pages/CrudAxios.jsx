@@ -17,11 +17,11 @@ const CrudAxios = () => {
     await axios.post("http://localhost:3000/api/movies", {
       title: input.movieTitle,
       year: input.movieYear,
-    })
+    });
   fetchData();
-  set
+  setInput(useState)
   }catch (err) {
-    console.error();
+    alert(err);
   }
   };
 
@@ -29,6 +29,15 @@ const CrudAxios = () => {
     let {value, name} = event.target;
     setInput({...input, [name]:value})
   };
+
+   const handleDelete = async (id) => {
+     try {
+       await axios.delete(`http://localhost:3000/api/movies/${id}`);
+       fetchData();
+     } catch (err) {
+       alert(err);
+     }
+   };
 
   useEffect(() => {
     fetchData();
@@ -81,7 +90,16 @@ const CrudAxios = () => {
                   <td>{movie.title_tb_movie}</td>
                   <td>{movie.year_tb_movie}</td>
                   <td>
-                    <button style={{ marginRight: "5px" }}>Edit</button>
+                    <button
+                      onClick={() => {
+                        if (confirm("Anda Yakin Menghapus Film Ini?")) {
+                          handleDelete(movie.id_tb_movie);
+                        }
+                      }}
+                    >
+                      Delete
+                    </button>
+                    <button>Edit</button>
                   </td>
                 </tr>
               );
@@ -91,6 +109,6 @@ const CrudAxios = () => {
       </div>
     </>
   );
-};
+}
 
 export default CrudAxios;

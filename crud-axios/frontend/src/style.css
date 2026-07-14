@@ -28,6 +28,23 @@
     justify-content: center;
 }
 
+.div-table-movie button {
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 6px;
+  color: palevioletred;
+}
+
+.div-table-movie .bt-del {
+  background-color: peachpuff;
+  margin-right: 10px;
+}
+
+.div-table-movie .bt-edit {
+  margin-left: 10px;
+  background-color: peachpuff;
+}
+
 .div-input-movie form {
   border-radius: 5px;
   background-color: #f2f2f2;

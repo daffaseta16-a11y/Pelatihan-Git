@@ -18,7 +18,8 @@ const CrudAxios = () => {
       title: input.movieTitle,
       year: input.movieYear,
     })
-  fetchData()
+  fetchData();
+  set
   }catch (err) {
     console.error();
   }

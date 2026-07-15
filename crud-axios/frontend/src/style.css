@@ -1,80 +1,156 @@
-.div-table-movie table{
+/* --- GLOBAL STYLE --- */
+body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+/* --- SECTION FORM (TAMBAH FILM) --- */
+.div-input-movie {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px; /* Memberi jarak ke tabel di bawahnya */
+}
+
+.div-input-movie form {
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  width: 90%;
+  max-width: 600px; /* Membatasi lebar form di layar lebar agar tidak terlalu melar */
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  text-align: center; /* Membantu memusatkan elemen di dalam form */
+}
+
+.div-input-movie label {
+  display: block;
+  font-weight: bold;
+  color: #555;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+/* Menjadikan input sebagai block dan dipusatkan dengan margin auto */
+.div-input-movie input[type=text], 
+.div-input-movie input[type=number] {
+  width: 90%;
+  padding: 12px;
+  margin: 8px auto;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.div-input-movie input[type=text]:focus, 
+.div-input-movie input[type=number]:focus {
+  border-color: palevioletred;
+  outline: none;
+}
+
+.div-input-movie input[type=submit] {
+  width: 90%;
+  background-color: palevioletred;
+  color: white;
+  padding: 14px;
+  margin: 20px auto 8px auto;
+  display: block;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.div-input-movie input[type=submit]:hover {
+  background-color: #c95c7d; /* Warna pink yang sedikit lebih gelap saat hover */
+}
+
+/* --- SECTION TABEL FILM --- */
+.div-table-movie {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.div-table-movie table {
   border-collapse: collapse;
   width: 90%;
+  max-width: 1000px; /* Menjaga tabel agar tidak terlalu lebar di layar monitor besar */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  background-color: white;
 }
 
 .div-table-movie td, 
 .div-table-movie th {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 12px 8px; /* Padding vertikal sedikit ditambah agar lega */
+  text-align: center; /* Menyelaraskan teks tabel ke tengah */
 }
 
-.div-table-movie tr:nth-child(even){background-color: #f2f2f2;}
+.div-table-movie tr:nth-child(even) {
+  background-color: #fdf6f8; /* Soft pink tint untuk baris genap */
+}
 
-.div-table-movie tr:hover {background-color: #ddd;}
+.div-table-movie tr:hover {
+  background-color: #f5e1e6;
+}
 
 .div-table-movie th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
+  padding-top: 14px;
+  padding-bottom: 14px;
   background-color: palevioletred;
   color: white;
+  font-weight: bold;
 }
 
-.div-table-movie{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+/* --- TOMBOL AKSI (ACTION BUTTONS) --- */
+/* Menggunakan Flexbox di dalam cell agar tombol sejajar rapi di tengah */
+.div-table-movie td:last-child {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Jarak otomatis antar tombol tanpa margin manual */
+  border: none; /* Menghilangkan border dalam agar flexbox tidak merusak struktur border */
 }
 
 .div-table-movie button {
-  border-radius: 8px;
-  font-size: 16px;
-  padding: 6px;
-  background-color: pink;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+.div-table-movie button:active {
+  transform: scale(0.95);
 }
 
 .bt-del {
-  background-color: peachpuff;
-  margin-right: 10px;
+  background-color: #f5a3a3; /* Soft red */
+  color: white;
+}
+
+.bt-del:hover {
+  opacity: 0.9;
 }
 
 .bt-edit {
-  margin-left: 10px;
-  background-color: pink
-}
-
-.div-input-movie form {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-
-.div-input-movie label {display: block;}
-
-.div-input-movie input[type=text], 
-.div-input-movie input[type=number] {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.div-input-movie input[type=submit] {
-  width: 100%;
-  background-color: pink;
+  background-color: #a3cbf5; /* Soft blue agar kontras dengan tombol delete */
   color: white;
-  padding: 14px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
-.div-input-movie input[type=submit]:hover {
-  background-color:palevioletred;
+.bt-edit:hover {
+  opacity: 0.9;
 }

@@ -5,6 +5,8 @@ const CrudAxios = () => {
   const [data, setData] = useState([]);
   const [input, setInput] = useState({movieTitle:"", movieYear:0});
 
+  const [editId, setEditId] = useState(null);
+
   const fetchData = () => {
     axios.get("http://localhost:3000/api/movies").then((res) => {
       setData(res.data);
@@ -14,10 +16,18 @@ const CrudAxios = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
   try{
-    await axios.post("http://localhost:3000/api/movies", {
-      title: input.movieTitle,
-      year: input.movieYear,
-    });
+    if (editId) {
+      await axios.put(`http://localhost:3000/api/movies/${editId}`, {
+        title: input.movieTitle,
+        year: Number(input.movieYear),
+      });
+      setEditId(null); 
+    } else {
+      await axios.post("http://localhost:3000/api/movies", {
+        title: input.movieTitle,
+        year: input.movieYear,
+      });
+    }
   fetchData();
   setInput(useState)
   }catch (err) {
@@ -28,6 +38,14 @@ const CrudAxios = () => {
   const handleChange = (event) => {
     let {value, name} = event.target;
     setInput({...input, [name]:value})
+  };
+
+  const handleEdit = (movie) => {
+    setEditId(movie.id_tb_movie); // Simpan ID untuk dikirim saat submit
+    setInput({
+      movieTitle: movie.title_tb_movie,
+      movieYear: movie.year_tb_movie,
+    });
   };
 
    const handleDelete = async (id) => {
@@ -48,6 +66,8 @@ const CrudAxios = () => {
       <h1>CRUD AXIOS</h1>
       <div className="div-input-movie">
         <form onSubmit={handleSubmit}>
+          <h3>{editId ? "Edit Film" : "Tambah Film"}</h3>
+
           <label htmlFor="movieTitle">Title Movie</label>
           <input
             type="text"
@@ -55,6 +75,7 @@ const CrudAxios = () => {
             name="movieTitle"
             placeholder="Title Movie..."
             required
+            value={input.movieTitle}
             onChange={handleChange}
           ></input>
 
@@ -65,10 +86,23 @@ const CrudAxios = () => {
             name="movieYear"
             placeholder="Year Movie..."
             required
+            value={input.movieYear}
             onChange={handleChange}
-            ></input>
+          ></input>
 
-          <input type="submit" value="Submit"></input>
+          <input type="submit" value={editId ? "Update" : "Submit"}></input>
+          {editId && (
+            <button
+              type="button"
+              onClick={() => {
+                setEditId(null);
+                setInput(useState);
+              }}
+              style={{ marginLeft: "10px" }}
+            >
+              Batal
+            </button>
+          )}
         </form>
       </div>
 
@@ -99,7 +133,7 @@ const CrudAxios = () => {
                     >
                       Delete
                     </button>
-                    <button>Edit</button>
+                    <button onClick={() => handleEdit(movie)}>Edit</button>
                   </td>
                 </tr>
               );

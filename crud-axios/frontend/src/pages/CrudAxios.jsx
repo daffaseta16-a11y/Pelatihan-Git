@@ -41,11 +41,12 @@ const CrudAxios = () => {
   };
 
   const handleEdit = (movie) => {
-    setEditId(movie.id_tb_movie); // Simpan ID untuk dikirim saat submit
+    setEditId(movie.id_tb_movie); 
     setInput({
       movieTitle: movie.title_tb_movie,
       movieYear: movie.year_tb_movie,
     });
+    fetchData()
   };
 
    const handleDelete = async (id) => {

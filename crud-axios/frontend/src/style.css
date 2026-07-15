@@ -35,14 +35,14 @@
   color: palevioletred;
 }
 
-.div-table-movie .bt-del {
+.bt-del {
   background-color: peachpuff;
   margin-right: 10px;
 }
 
-.div-table-movie .bt-edit {
+.bt-edit {
   margin-left: 10px;
-  background-color: peachpuff;
+  background-color: pink
 }
 
 .div-input-movie form {

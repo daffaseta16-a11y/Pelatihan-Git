@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import baseLink from "../config/utils";
 
 const CrudAxios = () => {
   const [data, setData] = useState([]);
@@ -8,7 +9,7 @@ const CrudAxios = () => {
   const [editId, setEditId] = useState(null);
 
   const fetchData = () => {
-    axios.get("http://localhost:3000/api/movies").then((res) => {
+    axios.get(`${baseLink}/api/movies`).then((res) => {
       setData(res.data);
     });
   };
@@ -17,13 +18,13 @@ const CrudAxios = () => {
     event.preventDefault();
   try{
     if (editId) {
-      await axios.put(`http://localhost:3000/api/movies/${editId}`, {
+      await axios.put(`${baseLink}/api/movies/${editId}`, {
         title: input.movieTitle,
         year: Number(input.movieYear),
       });
       setEditId(null); 
     } else {
-      await axios.post("http://localhost:3000/api/movies", {
+      await axios.post(`${baseLink}/api/movies`, {
         title: input.movieTitle,
         year: input.movieYear,
       });
@@ -51,7 +52,7 @@ const CrudAxios = () => {
 
    const handleDelete = async (id) => {
      try {
-       await axios.delete(`http://localhost:3000/api/movies/${id}`);
+       await axios.delete(`${baseLink}/api/movies/${id}`);
        fetchData();
      } catch (err) {
        alert(err);

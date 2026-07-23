@@ -11,18 +11,13 @@ function MainLayout() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
             <Link to="/CrudAxios">Crud Axios</Link>
           </li>
           <li>
-            <Link to="/nothing-here">Nothing Here</Link>
+            <Link to="/Category">Category</Link>
           </li>
         </ul>
       </nav>
-
-      <hr />
 
       {/* An <Outlet> renders whatever child route is currently active,
           so you can think about this <Outlet> as a placeholder for
@@ -32,12 +27,5 @@ function MainLayout() {
   );
 }
 
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
 
 export default MainLayout;

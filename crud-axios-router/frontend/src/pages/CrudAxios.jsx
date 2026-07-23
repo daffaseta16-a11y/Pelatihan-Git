@@ -4,60 +4,60 @@ import baseLink from "../config/utils";
 
 const CrudAxios = () => {
   const [data, setData] = useState([]);
-  const [input, setInput] = useState({movieTitle:"", movieYear:0});
+  const [input, setInput] = useState({ movieTitle: "", movieYear: 0 });
 
   const [editId, setEditId] = useState(null);
 
   const fetchData = () => {
     axios.get(`${baseLink}/api/movies`).then((res) => {
-      setData(res.data);
+    setData(res.data);
     });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  try{
-    if (editId) {
-      await axios.put(`${baseLink}/api/movies/${editId}`, {
-        title: input.movieTitle,
-        year: Number(input.movieYear),
-      });
-      setEditId(null); 
-    } else {
-      await axios.post(`${baseLink}/api/movies`, {
-        title: input.movieTitle,
-        year: input.movieYear,
-      });
+    try {
+      if (editId) {
+        await axios.put(`${baseLink}/api/movies/${editId}`, {
+          title: input.movieTitle,
+          year: Number(input.movieYear),
+        });
+        setEditId(null);
+      } else {
+        await axios.post(`${baseLink}/api/movies`, {
+          title: input.movieTitle,
+          year: input.movieYear,
+        });
+      }
+      fetchData();
+      setInput(useState);
+    } catch (err) {
+      alert(err);
     }
-  fetchData();
-  setInput(useState)
-  }catch (err) {
-    alert(err);
-  }
   };
 
   const handleChange = (event) => {
-    let {value, name} = event.target;
-    setInput({...input, [name]:value})
+    let { value, name } = event.target;
+    setInput({ ...input, [name]: value });
   };
 
   const handleEdit = (movie) => {
-    setEditId(movie.id_tb_movie); 
+    setEditId(movie.id_tb_movie);
     setInput({
       movieTitle: movie.title_tb_movie,
       movieYear: movie.year_tb_movie,
     });
-    fetchData()
+    fetchData();
   };
 
-   const handleDelete = async (id) => {
-     try {
-       await axios.delete(`${baseLink}/api/movies/${id}`);
-       fetchData();
-     } catch (err) {
-       alert(err);
-     }
-   };
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${baseLink}/api/movies/${id}`);
+      fetchData();
+    } catch (err) {
+      alert(err);
+    }
+  };
 
   useEffect(() => {
     fetchData();
@@ -145,6 +145,6 @@ const CrudAxios = () => {
       </div>
     </>
   );
-}
+};
 
 export default CrudAxios;

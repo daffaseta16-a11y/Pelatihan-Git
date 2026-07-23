@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import baseLink from "../config/utils";
+import "../../src/style.css";
 
 const CrudAxios = () => {
   const [data, setData] = useState([]);

@@ -69,7 +69,9 @@ const TableCategory = () => {
   return (
     <>
       <h1>Table Category</h1>
-      <button className="button-category" onClick={addCategory}>add category</button>
+      <button className="btn btn-soft btn-error m-7" onClick={addCategory}>
+        Add Category
+      </button>
 
       <div className="div-table-movie">
         <table>
@@ -90,7 +92,7 @@ const TableCategory = () => {
                   <td>{item.des_tb_category}</td>
                   <td>
                     <button
-                    className="bt-delete"
+                      className="btn btn-soft btn-secondary"
                       onClick={() => {
                         if (confirm("Anda Yakin Menghapus Film Ini?")) {
                           handleDelete(item.id_tb_category);
@@ -99,10 +101,12 @@ const TableCategory = () => {
                     >
                       Delete
                     </button>
-                    <button 
-                    className="bt-edit"
-                    onClick={() => 
-                    handleEdit(item.id_tb_category)}>Edit</button>
+                    <button
+                      className="btn btn-soft btn-info"
+                      onClick={() => handleEdit(item.id_tb_category)}
+                    >
+                      Edit
+                    </button>
                   </td>
                 </tr>
               );

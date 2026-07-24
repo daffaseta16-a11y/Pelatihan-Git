@@ -1,8 +1,11 @@
 import { use, useEffect, useState } from "react";
 import baseLink from "../../config/utils";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const TableCategory = () => {
+ let navigate = useNavigate();
+
   const [data, setData] = useState([]);
   const [input, setInput] = useState({ movieTitle: "", movieYear: 0 });
 
@@ -42,13 +45,8 @@ const TableCategory = () => {
     setInput({ ...input, [name]: value });
   };
 
-  const handleEdit = (movie) => {
-    setEditId(movie.id_tb_movie);
-    setInput({
-      movieTitle: movie.title_tb_movie,
-      movieYear: movie.year_tb_movie,
-    });
-    fetchData();
+  const handleEdit = async (id) => {
+   navigate(`/category/${id}/edit`)
   };
 
   const handleDelete = async (id) => {
@@ -60,6 +58,10 @@ const TableCategory = () => {
     }
   };
 
+  const addCategory = () => {
+    navigate("create");
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -67,6 +69,7 @@ const TableCategory = () => {
   return (
     <>
       <h1>Table Category</h1>
+      <button className="button-category" onClick={addCategory}>add category</button>
 
       <div className="div-table-movie">
         <table>
@@ -87,6 +90,7 @@ const TableCategory = () => {
                   <td>{item.des_tb_category}</td>
                   <td>
                     <button
+                    className="bt-delete"
                       onClick={() => {
                         if (confirm("Anda Yakin Menghapus Film Ini?")) {
                           handleDelete(item.id_tb_category);
@@ -95,7 +99,10 @@ const TableCategory = () => {
                     >
                       Delete
                     </button>
-                    <button onClick={() => handleEdit(movie)}>Edit</button>
+                    <button 
+                    className="bt-edit"
+                    onClick={() => 
+                    handleEdit(item.id_tb_category)}>Edit</button>
                   </td>
                 </tr>
               );

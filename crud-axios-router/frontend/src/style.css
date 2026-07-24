@@ -46,9 +46,21 @@ h2 {
   margin: 8px auto;
   display: block;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  box-sizing: border-box;
+  border-radius: 3px;
+  box-sizing: border-box; 
   transition: border-color 0.2s;
+}
+
+.div-input-movie textarea {
+  width: 90%;
+  height: 150px;
+  padding: 12px;
+  box-sizing: border-box; 
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  resize: none;
+  margin: 8px auto;
 }
 
 .div-input-movie input[type=text]:focus, 
@@ -178,3 +190,4 @@ nav ul li a {
 nav ul li a:hover {
   background-color: #111111;
 }
+

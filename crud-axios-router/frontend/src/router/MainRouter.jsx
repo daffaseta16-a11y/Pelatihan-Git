@@ -19,6 +19,7 @@ const MainRouter  = () => {
                <Route path="CrudAxios" element={<CrudAxios />} />
                <Route path="Category" element={<TableCategory />} />
                <Route path="Category/create" element={<FormCategory />} />
+               <Route path="Category/:id/edit" element={<FormCategory />} />
 
                {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit

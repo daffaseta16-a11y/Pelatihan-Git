@@ -1,36 +1,49 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import baseLink from "../../config/utils";
+import { Link, useNavigate, useParams } from "react-router";
 
 const FormCategory = () => {
+ let {id} = useParams();
+ let navigate = useNavigate();
+
   const [data, setData] = useState([]);
-  const [input, setInput] = useState({ movieTitle: "", movieYear: 0 });
+  const [input, setInput] = useState({ categoryName: "", categoryDes: "", categoryId: null });
 
   const [editId, setEditId] = useState(null);
 
   const fetchData = () => {
-    axios.get(`${baseLink}/api/movies`).then((res) => {
-      setData(res.data);
+    axios.get(`${baseLink}/api/category/${id}`).then((res) => {
+      let { 
+        des_tb_category: categoryDes, 
+        id_tb_category: categoryId, 
+        name_tb_category: categoryName
+      } = res.data[0];
+
+    setInput({categoryDes, categoryId, categoryName});
+      console.log(res.data[0])
+
     });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      if (editId) {
-        await axios.put(`${baseLink}/api/movies/${editId}`, {
-          title: input.movieTitle,
-          year: Number(input.movieYear),
+      if (input.categoryId) {
+        await axios.put(`${baseLink}/api/category/${input.categoryId}`, {
+          name: input.categoryName,
+          des: input.categoryDes,
         });
         setEditId(null);
+        navigate("/category")
       } else {
-        await axios.post(`${baseLink}/api/movies`, {
-          title: input.movieTitle,
-          year: input.movieYear,
+        await axios.post(`${baseLink}/api/category`, {
+          name: input.categoryName,
+          des: input.categoryDes,
         });
       }
-      fetchData();
-      setInput(useState);
+      // fetchData();
+      setInput({categoryName: "", categoryDes: "", categoryId: null});
     } catch (err) {
       alert(err);
     }
@@ -41,11 +54,11 @@ const FormCategory = () => {
     setInput({ ...input, [name]: value });
   };
 
-  const handleEdit = (movie) => {
-    setEditId(movie.id_tb_movie);
+  const handleEdit = (category) => {
+    setEditId(category.id);
     setInput({
-      movieTitle: movie.title_tb_movie,
-      movieYear: movie.year_tb_movie,
+      categoryName: category.name,
+      categoryDes: category.des,
     });
     fetchData();
   };
@@ -65,32 +78,28 @@ const FormCategory = () => {
 
   return (
     <>
+      <h1>{id}</h1>
       <h1>CRUD AXIOS</h1>
       <div className="div-input-movie">
         <form onSubmit={handleSubmit}>
-          <h3>{editId ? "Edit Film" : "Tambah Film"}</h3>
-
-          <label htmlFor="movieTitle">Title Movie</label>
+          <label htmlFor="CategoryName">Category Name</label>
           <input
             type="text"
-            id="movieTitle"
-            name="movieTitle"
-            placeholder="Title Movie..."
+            id="categoryName"
+            name="categoryName"
+            placeholder="Input Your Category Name..."
             required
-            value={input.movieTitle}
+            value={input.categoryName}
             onChange={handleChange}
           ></input>
 
-          <label htmlFor="movieYear">Year Movie</label>
-          <input
-            type="number"
-            id="movieYear"
-            name="movieYear"
-            placeholder="Year Movie..."
-            required
-            value={input.movieYear}
+          <label htmlFor="categoryDes">Category Description</label>
+          <textarea
+            name="categoryDes"
+            id="categoryDes"
+            value={input.categoryDes}
             onChange={handleChange}
-          ></input>
+          ></textarea>
 
           <input type="submit" value={editId ? "Update" : "Submit"}></input>
           {editId && (
@@ -98,50 +107,16 @@ const FormCategory = () => {
               type="button"
               onClick={() => {
                 setEditId(null);
-                setInput(useState);
+                setInput({categoryName: "", categoryDes: ""});
               }}
               style={{ marginLeft: "10px" }}
             >
               Batal
             </button>
           )}
-        </form>
-      </div>
 
-      <div className="div-table-movie">
-        <table>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Title</th>
-              <th>Year</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((movie, index) => {
-              return (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{movie.title_tb_movie}</td>
-                  <td>{movie.year_tb_movie}</td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        if (confirm("Anda Yakin Menghapus Film Ini?")) {
-                          handleDelete(movie.id_tb_movie);
-                        }
-                      }}
-                    >
-                      Delete
-                    </button>
-                    <button onClick={() => handleEdit(movie)}>Edit</button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+          <Link to="/Category">Cancel</Link>
+        </form>
       </div>
     </>
   );
